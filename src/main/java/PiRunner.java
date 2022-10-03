@@ -11,8 +11,8 @@ public class PiRunner {
         this.wantedSequence = newWantedString;
     }
 
-    public int search() throws IOException {
-        BufferedReader br = SingletonPiFile.getBPiDigits();
+    public int search(BufferedReader br) throws IOException {
+        // BufferedReader br = SingletonPiFile.getBPiDigitsFromFile();
         Timer.setSearchStartTime();
         int firstPos = -1;
         int posInComp = 0;
