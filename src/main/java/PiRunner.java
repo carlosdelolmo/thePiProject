@@ -1,5 +1,4 @@
 import java.io.*;
-import java.net.URL;
 
 public class PiRunner {
     private String wantedSequence;
@@ -20,6 +19,8 @@ public class PiRunner {
         // BufferedReader br = new BufferedReader(fr);
         // BufferedReader br = new BufferedReader(new InputStreamReader(link.openStream()));
         BufferedReader br = SingletonPiFile.getBPiDigits();
+        // System.out.println("Comienza la búsqueda: " + Cronometer.getProgramTime() + "ms");
+        Cronometer.setSearchStartTime();
         int firstPos = -1;
         int posInComp = 0;
         int currentPos = 0;
@@ -42,7 +43,7 @@ public class PiRunner {
 
             currentPos++;
         }
-        System.out.println("Decimales leídos: " + currentPos);
+        // System.out.println("Decimales leídos: " + currentPos);
         return firstPos;
     }
 }
