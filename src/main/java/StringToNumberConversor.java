@@ -1,5 +1,3 @@
-package org.example;
-
 import java.text.Normalizer;
 
 public class StringToNumberConversor {
