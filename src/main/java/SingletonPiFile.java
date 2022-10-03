@@ -20,7 +20,7 @@ public class SingletonPiFile {
             throw new RuntimeException(e);
         }
     }
-    public static BufferedReader getTPiDigits() throws IOException {
+    public static BufferedReader getThPiDigits() throws IOException {
         return new BufferedReader(new InputStreamReader(oneThousandPiDigitsInternet.openStream()));
     }
     public static BufferedReader getMPiDigits() throws IOException {

@@ -12,14 +12,7 @@ public class PiRunner {
     }
 
     public int search() throws IOException {
-        // File file = SingletonPiFile.getMFile();
-        // URL link = SingletonPiFile.getMPiDigits();
-        // FileReader fr = new FileReader(file);
-        // FileReader fr = new FileReader(link.openStream().toString());
-        // BufferedReader br = new BufferedReader(fr);
-        // BufferedReader br = new BufferedReader(new InputStreamReader(link.openStream()));
         BufferedReader br = SingletonPiFile.getBPiDigits();
-        // System.out.println("Comienza la búsqueda: " + Cronometer.getProgramTime() + "ms");
         Cronometer.setSearchStartTime();
         int firstPos = -1;
         int posInComp = 0;
@@ -29,7 +22,6 @@ public class PiRunner {
         while((next = br.read()) != -1){
             char currentNumber = (char) next;
             if(currentNumber == wantedSequence.charAt(posInComp)){
-                // System.out.println("En pos "+ currentPos + " se compara y se ve que es igual " + currentNumber);
                 if(posInComp == 0) firstPos = currentPos;
                 if(++posInComp == wantedSequence.length()){
                     break;
@@ -40,10 +32,8 @@ public class PiRunner {
                     posInComp = 0;
                 }
             }
-
             currentPos++;
         }
-        // System.out.println("Decimales leídos: " + currentPos);
         return firstPos;
     }
 }

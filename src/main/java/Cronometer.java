@@ -5,7 +5,7 @@ public class Cronometer {
     private Cronometer(){
         programStartTime = System.nanoTime();
     }
-    public static void setStartTime(){
+    public static void setProgramStartTime(){
         programStartTime = System.nanoTime();
     }
     public static void setSearchStartTime(){
@@ -17,7 +17,7 @@ public class Cronometer {
     public static long getSearchTime(){
         return (System.nanoTime() - searchStartTime)/1000000;
     }
-    public static long getAccessTime(){
+    public static long getMemoryAccessTime(){
         return(getProgramTime() - getSearchTime());
     }
 }
