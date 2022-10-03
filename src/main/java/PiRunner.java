@@ -13,7 +13,7 @@ public class PiRunner {
 
     public int search() throws IOException {
         BufferedReader br = SingletonPiFile.getBPiDigits();
-        Cronometer.setSearchStartTime();
+        Timer.setSearchStartTime();
         int firstPos = -1;
         int posInComp = 0;
         int currentPos = 0;

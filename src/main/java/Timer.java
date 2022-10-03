@@ -1,8 +1,8 @@
-public class Cronometer {
+public class Timer {
     private static long programStartTime;
     private static long searchStartTime;
-    private Cronometer crono = new Cronometer();
-    private Cronometer(){
+    private Timer crono = new Timer();
+    private Timer(){
         programStartTime = System.nanoTime();
     }
     public static void setProgramStartTime(){

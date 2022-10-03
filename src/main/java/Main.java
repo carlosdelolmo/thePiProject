@@ -7,11 +7,11 @@ public class Main {
         System.out.print("Introduce la palabra a buscar: ");
         String wantedString= sc.nextLine();
         System.out.println();
-        Cronometer.setProgramStartTime();
+        Timer.setProgramStartTime();
         StringToNumberConversor stringConversor = new StringToNumberConversor();
         PiRunner piRunner = new PiRunner(stringConversor.numberize(wantedString));
         System.out.println("Posición de \"" + wantedString + "\": " + piRunner.search());
-        System.out.println("Tiempo de búsqueda: " + Cronometer.getSearchTime() + "ms");
-        System.out.println("Tiempo de acceso a ficheros: " + Cronometer.getMemoryAccessTime() + "ms");
+        System.out.println("Tiempo de búsqueda: " + Timer.getSearchTime() + "ms");
+        System.out.println("Tiempo de acceso a ficheros: " + Timer.getMemoryAccessTime() + "ms");
     }
 }
