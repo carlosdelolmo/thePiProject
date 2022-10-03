@@ -1,4 +1,5 @@
 import java.io.*;
+import java.net.URL;
 
 public class PiRunner {
     private String wantedSequence;
@@ -12,9 +13,13 @@ public class PiRunner {
     }
 
     public int search() throws IOException {
-        File file = SingletonPiFile.getMFile();
-        FileReader fr = new FileReader(file);
-        BufferedReader br = new BufferedReader(fr);
+        // File file = SingletonPiFile.getMFile();
+        // URL link = SingletonPiFile.getMPiDigits();
+        // FileReader fr = new FileReader(file);
+        // FileReader fr = new FileReader(link.openStream().toString());
+        // BufferedReader br = new BufferedReader(fr);
+        // BufferedReader br = new BufferedReader(new InputStreamReader(link.openStream()));
+        BufferedReader br = SingletonPiFile.getBPiDigits();
         int firstPos = -1;
         int posInComp = 0;
         int currentPos = 0;
@@ -37,6 +42,7 @@ public class PiRunner {
 
             currentPos++;
         }
+        System.out.println("Decimales leídos: " + currentPos);
         return firstPos;
     }
 }
