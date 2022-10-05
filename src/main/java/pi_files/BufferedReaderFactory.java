@@ -1,3 +1,8 @@
+package pi_files;
+
+import pi_files.SearchFileSelection;
+import pi_files.SingletonPiFile;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 

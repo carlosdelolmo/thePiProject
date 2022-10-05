@@ -1,3 +1,5 @@
+package tools;
+
 import java.text.Normalizer;
 import java.util.HashSet;
 

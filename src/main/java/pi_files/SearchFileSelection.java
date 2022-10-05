@@ -1,5 +1,7 @@
+package pi_files;
+
 public enum SearchFileSelection {
-    ONETHOUSANDURL("One thousand pi digits form Internet"),
+    ONETHOUSANDURL("One thousand pi digits from Internet"),
     ONEMILLIONURL("One million pi digits from Internet"),
     ONEBILLIONURL("One billion pi digits from Internet"),
     ONEBILLIONFILE("One billion pi digits from local file (in case it exists)");

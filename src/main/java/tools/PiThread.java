@@ -1,3 +1,5 @@
+package tools;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 
@@ -12,13 +14,14 @@ public class PiThread extends Thread{
         this.wantedSequence = wantedSequence;
         this.br = br;
     }
-    public void run(){
+    public void run(){/*
         try {
-            search();
+            // search();
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
+        }*/
     }
+    /*
     private void search() throws IOException {
         int firstPos = -1;
         int posInComp = 0;
@@ -43,6 +46,6 @@ public class PiThread extends Thread{
             currentPos++;
         }
         System.out.println(currentPos);
-        // Main.muestra(firstPos);
-    }
+        // main_program.Main.muestra(firstPos);
+    }*/
 }

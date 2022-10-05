@@ -1,3 +1,7 @@
+package main_program;
+
+import tools.Timer;
+
 import java.io.*;
 
 public class PiRunner {
@@ -12,7 +16,7 @@ public class PiRunner {
     }
 
     public int search(BufferedReader br) throws IOException {
-        // BufferedReader br = SingletonPiFile.getBPiDigitsFromFile();
+        // BufferedReader br = pi_files.SingletonPiFile.getBPiDigitsFromFile();
         Timer.setSearchStartTime();
         int firstPos = -1;
         int posInComp = 0;
@@ -24,7 +28,7 @@ public class PiRunner {
             if(currentNumber == wantedSequence.charAt(posInComp)){
                 if(posInComp == 0) firstPos = currentPos;
                 if(++posInComp == wantedSequence.length()){
-                    break;
+                    return firstPos;
                 }
             } else {
                 if(posInComp > 0){
@@ -34,6 +38,6 @@ public class PiRunner {
             }
             currentPos++;
         }
-        return firstPos;
+        return -1;
     }
 }

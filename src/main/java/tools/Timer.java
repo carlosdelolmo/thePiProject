@@ -1,3 +1,5 @@
+package tools;
+
 public class Timer {
     private static long programStartTime;
     private static long searchStartTime;
