@@ -13,6 +13,8 @@ public class Main {
         StringToNumberConversor stringConversor = new StringToNumberConversor();
         BufferedReaderFactory brf= new BufferedReaderFactory();
         PiRunner piRunner = new PiRunner(stringConversor.numberize(wantedString));
+        System.out.println(stringConversor.numberize(wantedString)); // sergiodl 195187915412     999999998
+                                                                     // informa   91461518131     999999999
         System.out.println("Posición de \"" + wantedString + "\": " + piRunner.search(brf.getBufferedReader(selection)));
         System.out.println("Tiempo de búsqueda: " + Timer.getSearchTime() + "ms");
         System.out.println("Tiempo de acceso a ficheros: " + Timer.getMemoryAccessTime() + "ms");
