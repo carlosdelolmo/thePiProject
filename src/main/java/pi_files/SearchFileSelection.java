@@ -27,7 +27,5 @@ public enum SearchFileSelection {
         }
         return sb.toString();
     }
-    public int getSize(){
-        return size;
-    }
+    public static int getSize(int num){return values()[num].size;}
 }

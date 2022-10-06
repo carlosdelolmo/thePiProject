@@ -1,21 +1,19 @@
 package main_program;
 
-import main_program.Main;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 
 public class PiThread extends Thread {
-    private int start;
-    private int amount;
-    private String wantedSequence;
-    private BufferedReader br;
+    private final int START;
+    private final int AMOUNT;
+    private final String WANTED_SEQUENCE;
+    private final BufferedReader BR;
 
     public PiThread(int start, int amount, String wantedSequence, BufferedReader br) {
-        this.start = start;
-        this.amount = amount;
-        this.wantedSequence = wantedSequence;
-        this.br = br;
+        this.START = start;
+        this.AMOUNT = amount;
+        this.WANTED_SEQUENCE = wantedSequence;
+        this.BR = br;
     }
 
     public void run() {
@@ -29,16 +27,15 @@ public class PiThread extends Thread {
     private void search() throws IOException {
         int firstPos = -1;
         int posInComp = 0;
-        int currentPos = start;
+        int currentPos = START;
         int next;
-        //for(int i = 0; i < start; i++)
-        br.skip(start + 2);
-        int end = start + amount + wantedSequence.length() - 1;
-        while ((next = br.read()) != -1 && currentPos < end) {
+        BR.skip(START + 2);
+        int end = START + AMOUNT + WANTED_SEQUENCE.length() - 1;
+        while ((next = BR.read()) != -1 && currentPos < end) {
             char currentNumber = (char) next;
-            if (currentNumber == wantedSequence.charAt(posInComp)) {
+            if (currentNumber == WANTED_SEQUENCE.charAt(posInComp)) {
                 if (posInComp == 0) firstPos = currentPos;
-                if (++posInComp == wantedSequence.length()) {
+                if (++posInComp == WANTED_SEQUENCE.length()) {
                     Main.foundString(firstPos);
                     return;
                 }
