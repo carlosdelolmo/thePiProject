@@ -11,7 +11,7 @@ import java.util.Scanner;
 import static java.lang.System.exit;
 
 public class Main {
-    static int minPos = -1;
+    static int minPos;
 
     public static void main(String[] args){
 
@@ -29,9 +29,10 @@ public class Main {
         showResult(wantedString, nf);
     }
 
-    protected static String mainFunction(int selection, String wantedString){
+    protected static String mainFunction (int selection, String wantedString){
         // Comenzamos el programa
         Timer.setProgramStartTime();
+        minPos = -1;
         StringToNumberConversor stringConversor = new StringToNumberConversor();
         BufferedReaderFactory brf= new BufferedReaderFactory();
         int fileSize = SearchFileSelection.getSize(selection); // Obtenemos el numero de elementos del fichero
