@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="thePiProject:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/thePiProject_jar</output-path>
+    <root id="archive" name="thePiProject.jar">
+      <element id="module-output" name="thePiProject" />
+    </root>
+  </artifact>
+</component>
