@@ -14,6 +14,7 @@ public class Main {
     static int minPos = -1;
 
     public static void main(String[] args){
+
         // Pedimos al usuario la cadena a buscar
         Scanner sc = new Scanner(System.in);
         String wantedString = selectWantedString(sc);
@@ -21,26 +22,32 @@ public class Main {
         // Mostramos los distintos tamaños de fichero posibles
         int selection = displayFileTypes(sc);
 
+        mainFunction(selection, wantedString);
+
+        // Mostramos los resultados obtenidos
+        NumberFormatter nf = new NumberFormatter();
+        showResult(wantedString, nf);
+    }
+
+    protected static String mainFunction(int selection, String wantedString){
         // Comenzamos el programa
         Timer.setProgramStartTime();
         StringToNumberConversor stringConversor = new StringToNumberConversor();
         BufferedReaderFactory brf= new BufferedReaderFactory();
-        NumberFormatter nf = new NumberFormatter();
         int fileSize = SearchFileSelection.getSize(selection); // Obtenemos el numero de elementos del fichero
         String numberizedString = stringConversor.numberize(wantedString); // Pasamos la cadena de texto a numeros
 
         // Creamos hilos en función del tamano del fichero
         int numberThreads = calculateThreads(fileSize);
-        // System.out.println(numberThreads);
         int calcPerThread = fileSize/numberThreads; // Cantidad de numeros que tratará cada hilo
-        // System.out.println(calcPerThread);
         PiThread[] piThreads = new PiThread[numberThreads];
 
         // Creamos los hilos de busqueda
         createThreads(numberThreads, calcPerThread, numberizedString, brf, selection, piThreads);
 
-        // Mostramos los resultados obtenidos
-        showResult(wantedString, numberizedString, nf);
+
+        NumberFormatter nf = new NumberFormatter();
+        return nf.format(minPos);
     }
 
     private static int displayFileTypes(Scanner sc){
@@ -75,16 +82,15 @@ public class Main {
         }
     }
 
-
-    private static void showResult(String wantedString, String numberizedString, NumberFormatter nf){
+    private static void showResult(String wantedString, NumberFormatter nf){
         System.out.print("\n");
-        System.out.println("First seen position for \"" + wantedString + "\" (" + numberizedString + ") : " + nf.format(minPos));
+        System.out.println("First seen position for \"" + wantedString + "\": " + nf.format(minPos));
         System.out.println("Searching time: " + Timer.getSearchTime() + "ms");
         System.out.println("Memory accessing time: " + Timer.getMemoryAccessTime() + "ms");
     }
 
     public static void foundString(int pos){
-        if(minPos == -1 || pos < minPos)
+        if(minPos == -1 || pos < minPos){
             minPos = pos;
-    }
+    }}
 }
