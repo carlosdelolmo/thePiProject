@@ -40,7 +40,6 @@ public class PiThread extends Thread {
                 if (posInComp == 0) firstPos = currentPos;
                 if (++posInComp == wantedSequence.length()) {
                     Main.foundString(firstPos);
-                    Main.finishedThread();
                     return;
                 }
             } else {
@@ -51,6 +50,5 @@ public class PiThread extends Thread {
             }
             currentPos++;
         }
-        Main.finishedThread();
     }
 }

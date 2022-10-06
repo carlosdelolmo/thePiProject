@@ -24,7 +24,8 @@ public class Main {
         BufferedReaderFactory brf= new BufferedReaderFactory();
         NumberFormatter nf = new NumberFormatter();
         int fileSize = SearchFileSelection.getOpcion(selection).getSize();
-        int numberThreads = 100;
+        // System.out.println(fileSize<1000000?1:fileSize<1000000000?10:100);
+        int numberThreads = fileSize<1000000?1:fileSize<1000000000?10:100;
         int calcAmount = fileSize/numberThreads;
         String numberizedString = stringConversor.numberize(wantedString);
         PiThread[] piThreads = new PiThread[numberThreads];
@@ -48,8 +49,5 @@ public class Main {
     public static void foundString(int pos){
         if(minPos == -1 || pos < minPos)
             minPos = pos;
-    }
-    public static void finishedThread(){
-        System.out.print(".");
     }
 }
