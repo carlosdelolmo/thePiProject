@@ -25,6 +25,7 @@ public class GUIPiProject {
     }
     private void go(){
         GUIPiProject guiPiProject = this;
+        Font font = new Font("Lucida Sans Unicode",Font.PLAIN,18);
         JPanel tmpPanel;
         container = new JFrame("ThePiProject, now with these amazing graphics! :D");
         jpanel = (JPanel) container.getContentPane();
@@ -32,11 +33,16 @@ public class GUIPiProject {
 
         tmpPanel = new JPanel();
         tmpPanel.setLayout(new FlowLayout());
-        tmpPanel.add(new JLabel("Searching text"));
+        // .setFont(new Font("Monospaced",Font.BOLD,13))
+        JLabel auxL = new JLabel("Searching text");
+        auxL.setFont(font);
+        tmpPanel.add(auxL);
         textField = new JTextField("", 20);
+        textField.setFont(font);
         tmpPanel.add(textField);
         jpanel.add(tmpPanel);
         button = new JButton("Search");
+        button.setFont(font);
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -53,14 +59,21 @@ public class GUIPiProject {
         tmpPanel.add(button);
         tmpPanel = new JPanel();
         tmpPanel.setLayout(new FlowLayout());
-        tmpPanel.add(new JLabel("Position: "));
-        position = new JLabel("");
+        auxL = new JLabel("Position: ");
+        auxL.setFont(font);
+        tmpPanel.add(auxL);
+        auxL = new JLabel("");
+        auxL.setFont(font);
+        position = auxL;
         tmpPanel.add(position);
         jpanel.add(tmpPanel);
         tmpPanel = new JPanel();
         tmpPanel.setLayout(new FlowLayout());
-        tmpPanel.add(new JLabel("time (ms): "));
+        auxL = new JLabel("time (ms): ");
+        auxL.setFont(font);
+        tmpPanel.add(auxL);
         time = new JLabel("");
+        time.setFont(font);
         tmpPanel.add(time);
         jpanel.add(tmpPanel);
         container.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
