@@ -1,4 +1,4 @@
-package tools;
+package main_program;
 
 import main_program.Main;
 

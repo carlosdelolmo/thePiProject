@@ -3,7 +3,6 @@ package main_program;
 import pi_files.BufferedReaderFactory;
 import pi_files.SearchFileSelection;
 import tools.NumberFormatter;
-import tools.PiThread;
 import tools.StringToNumberConversor;
 import tools.Timer;
 
