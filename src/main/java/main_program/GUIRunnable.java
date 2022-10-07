@@ -10,6 +10,7 @@ public class GUIRunnable implements Runnable{
     @Override
     public void run() {
         Timer.setProgramStartTime();
-        guiPiProject.gotAnswered(Main.mainFunction(4, guiPiProject.getTextfieldText()));
+        FastSearcher fastSearcher = new FastSearcher();
+        guiPiProject.gotAnswered(fastSearcher.search(guiPiProject.getTextfieldText()));
     }
 }

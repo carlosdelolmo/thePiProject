@@ -13,6 +13,7 @@ public class BufferedReaderFactory {
             case ONEMILLIONURL -> SingletonPiFile.getMPiDigits();
             case ONEMILLIONFILE -> SingletonPiFile.getMPiDigitsFromFile();
             case ONETHOUSANDURL -> SingletonPiFile.getThPiDigits();
+            case ONETHOUSANDFILE -> SingletonPiFile.getThPiDigitsFile();
         };
         return wantedBufferedReader;
     }

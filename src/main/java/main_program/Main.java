@@ -11,7 +11,7 @@ import java.util.Scanner;
 import static java.lang.System.exit;
 
 public class Main {
-    static int minPos;
+    static String minPos;
 
     public static void main(String[] args){
 
@@ -20,35 +20,13 @@ public class Main {
         String wantedString = selectWantedString(sc);
 
         // Mostramos los distintos tamaños de fichero posibles
-        int selection = displayFileTypes(sc);
+        // int selection = displayFileTypes(sc);
 
-        mainFunction(selection, wantedString);
+        FastSearcher fastSearcher = new FastSearcher();
+        minPos = fastSearcher.search(wantedString);
 
         // Mostramos los resultados obtenidos
-        NumberFormatter nf = new NumberFormatter();
-        showResult(wantedString, nf);
-    }
-
-    protected static String mainFunction (int selection, String wantedString){
-        // Comenzamos el programa
-        Timer.setProgramStartTime();
-        minPos = -1;
-        StringToNumberConversor stringConversor = new StringToNumberConversor();
-        BufferedReaderFactory brf= new BufferedReaderFactory();
-        int fileSize = SearchFileSelection.getSize(selection); // Obtenemos el numero de elementos del fichero
-        String numberizedString = stringConversor.numberize(wantedString); // Pasamos la cadena de texto a numeros
-
-        // Creamos hilos en función del tamano del fichero
-        int numberThreads = calculateThreads(fileSize);
-        int calcPerThread = fileSize/numberThreads; // Cantidad de numeros que tratará cada hilo
-        PiThread[] piThreads = new PiThread[numberThreads];
-
-        // Creamos los hilos de busqueda
-        createThreads(numberThreads, calcPerThread, numberizedString, brf, selection, piThreads);
-
-
-        NumberFormatter nf = new NumberFormatter();
-        return nf.format(minPos);
+        showResult(wantedString);
     }
 
     private static int displayFileTypes(Scanner sc){
@@ -63,35 +41,10 @@ public class Main {
         return sc.nextLine();
     }
 
-    private static int calculateThreads(int fileSize){
-        return fileSize<1000000?1:fileSize<1000000000?10:100; // Calcula la cantidad de hilos que sera necesaria
-    }
-
-    private static void createThreads(int numberThreads, int calcPerThread, String numberizedString, BufferedReaderFactory brf, int fileSelection, PiThread[] piThreads) {
-        Timer.setSearchStartTime();
-        try {
-            for (int i = 0; i < numberThreads; i++) {
-                piThreads[i] = new PiThread(i * calcPerThread, calcPerThread, numberizedString, brf.getBufferedReader(fileSelection));
-                piThreads[i].start();
-            }
-            for (int i = 0; i < numberThreads; i++) {
-                piThreads[i].join();
-            }
-        }catch(Exception e){
-            System.out.println("Error al crear los hilos");
-            exit(-1);
-        }
-    }
-
-    private static void showResult(String wantedString, NumberFormatter nf){
+    private static void showResult(String wantedString){
         System.out.print("\n");
-        System.out.println("First seen position for \"" + wantedString + "\": " + nf.format(minPos));
+        System.out.println("First seen position for \"" + wantedString + "\": " + minPos);
         System.out.println("Searching time: " + Timer.getSearchTime() + "ms");
         System.out.println("Memory accessing time: " + Timer.getMemoryAccessTime() + "ms");
     }
-
-    public static void foundString(int pos){
-        if(minPos == -1 || pos < minPos){
-            minPos = pos;
-    }}
 }

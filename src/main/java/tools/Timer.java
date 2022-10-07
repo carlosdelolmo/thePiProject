@@ -11,7 +11,12 @@ public class Timer {
         programStartTime = System.nanoTime();
     }
     public static void setSearchStartTime(){
-        searchStartTime = System.nanoTime();
+        if(searchStartTime == 0)
+            searchStartTime = System.nanoTime();
+    }
+    public static void rebootTime(){
+        programStartTime = System.nanoTime();
+        searchStartTime = 0;
     }
     public static long getProgramTime(){
         return (System.nanoTime() - programStartTime)/1000000;

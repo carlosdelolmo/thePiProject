@@ -11,10 +11,12 @@ public class SingletonPiFile {
     private static URL oneBillionPiDigitsInternet;
     private static File oneBillionPiDigitsFile;
     private static File oneMillionPiDigitsFile;
+    private static File oneThousandPiDigitsFile;
 
     private SingletonPiFile() {
         String sep = System.getProperty("file.separator");
         try {
+            oneThousandPiDigitsFile = new File("src" + sep + "main"+ sep + "resources" + sep + "piT.txt");
             oneThousandPiDigitsInternet = new URL("https://www.angio.net/pi/digits/1000.txt");
             oneMillionPiDigitsInternet = new URL("https://www.angio.net/pi/digits/pi1000000.txt");
             oneMillionPiDigitsFile = new File("src" + sep + "main"+ sep + "resources" + sep + "piM.txt");
@@ -38,5 +40,8 @@ public class SingletonPiFile {
     }
     public  static BufferedReader getMPiDigitsFromFile() throws FileNotFoundException {
         return new BufferedReader(new FileReader(oneMillionPiDigitsFile));
+    }
+    public static BufferedReader getThPiDigitsFile() throws FileNotFoundException{
+        return new BufferedReader(new FileReader(oneThousandPiDigitsFile));
     }
 }

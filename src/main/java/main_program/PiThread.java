@@ -8,12 +8,15 @@ public class PiThread extends Thread {
     private final int AMOUNT;
     private final String WANTED_SEQUENCE;
     private final BufferedReader BR;
+    private final FastSearcher FS;
+    private boolean canContinue = true;
 
-    public PiThread(int start, int amount, String wantedSequence, BufferedReader br) {
+    protected PiThread(int start, int amount, String wantedSequence, BufferedReader br, FastSearcher fs) {
         this.START = start;
         this.AMOUNT = amount;
         this.WANTED_SEQUENCE = wantedSequence;
         this.BR = br;
+        this.FS = fs;
     }
 
     public void run() {
@@ -23,6 +26,9 @@ public class PiThread extends Thread {
             throw new RuntimeException(e);
         }
     }
+    protected void kill(){
+        canContinue = false;
+    }
 
     private void search() throws IOException {
         int firstPos = -1;
@@ -31,12 +37,13 @@ public class PiThread extends Thread {
         int next;
         BR.skip(START + 2);
         int end = START + AMOUNT + WANTED_SEQUENCE.length() - 1;
-        while ((next = BR.read()) != -1 && currentPos < end) {
+        while (canContinue && (next = BR.read()) != -1 && currentPos < end) {
             char currentNumber = (char) next;
             if (currentNumber == WANTED_SEQUENCE.charAt(posInComp)) {
                 if (posInComp == 0) firstPos = currentPos;
                 if (++posInComp == WANTED_SEQUENCE.length()) {
-                    Main.foundString(firstPos);
+                    // System.out.println("thread " + START/AMOUNT + " found at pos " + firstPos);
+                    FS.foundString(START/AMOUNT, firstPos);
                     return;
                 }
             } else {
@@ -47,5 +54,6 @@ public class PiThread extends Thread {
             }
             currentPos++;
         }
+        // System.out.println(".");
     }
 }
