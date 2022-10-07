@@ -10,7 +10,6 @@ public class NumberFormatter {
             stack.push(number.toString().charAt(i));
         }
         String res = "";
-        // System.out.println(stack.toString());
         while(stack.size() > 3){
             for(int i = 0; i < 3; i++) res = stack.pop() + res;
             res = "." + res;

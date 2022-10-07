@@ -1,8 +1,8 @@
 package main_program;
 
 public class KillerThread extends Thread{
-    private int id, maxRunningThreadId;
-    PiThread[] piThreads;
+    private final int id, maxRunningThreadId;
+    private final PiThread[] piThreads;
     public KillerThread(int id, int maxRunningThreadId, PiThread[] piThreads){
         this.id = id;
         this.maxRunningThreadId = maxRunningThreadId;
@@ -12,6 +12,8 @@ public class KillerThread extends Thread{
     public void run() {
         kill();
     }
+
+    // Mata todos los hilos con id superior a un id dado
     protected void kill(){
         for(int i = maxRunningThreadId; i > id; i--){
             try {

@@ -42,7 +42,6 @@ public class PiThread extends Thread {
             if (currentNumber == WANTED_SEQUENCE.charAt(posInComp)) {
                 if (posInComp == 0) firstPos = currentPos;
                 if (++posInComp == WANTED_SEQUENCE.length()) {
-                    // System.out.println("thread " + START/AMOUNT + " found at pos " + firstPos);
                     FS.foundString(START/AMOUNT, firstPos);
                     return;
                 }
@@ -54,6 +53,5 @@ public class PiThread extends Thread {
             }
             currentPos++;
         }
-        // System.out.println(".");
     }
 }

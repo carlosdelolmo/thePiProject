@@ -1,7 +1,7 @@
 package main_program;
 
 import pi_files.BufferedReaderFactory;
-import pi_files.SearchFileSelection;
+import pi_files.SearchFileEnum;
 import tools.NumberFormatter;
 import tools.StringToNumberConversor;
 import tools.Timer;
@@ -23,7 +23,7 @@ public class FastSearcher {
         Stack<Integer> filesStack = generateFileStack();
         while(minPos < 0 && ! filesStack.isEmpty()){
             int selection = filesStack.pop();
-            int fileSize = SearchFileSelection.getSize(selection); // Obtenemos el numero de elementos del fichero
+            int fileSize = SearchFileEnum.getSize(selection); // Obtenemos el numero de elementos del fichero
             String numberizedString = stringConversor.numberize(wantedString); // Pasamos la cadena de texto a numeros
 
             // Creamos hilos en función del tamano del fichero
@@ -43,9 +43,9 @@ public class FastSearcher {
     }
     private Stack<Integer> generateFileStack(){
         Stack<Integer> stack = new Stack<>();
-        stack.push(SearchFileSelection.getIndex(SearchFileSelection.ONEBILLIONFILE));
-        stack.push(SearchFileSelection.getIndex(SearchFileSelection.ONEMILLIONFILE));
-        stack.push(SearchFileSelection.getIndex(SearchFileSelection.ONETHOUSANDFILE));
+        stack.push(SearchFileEnum.getIndex(SearchFileEnum.ONEBILLIONFILE));
+        stack.push(SearchFileEnum.getIndex(SearchFileEnum.ONEMILLIONFILE));
+        stack.push(SearchFileEnum.getIndex(SearchFileEnum.ONETHOUSANDFILE));
         return stack;
     }
     private void createThreads(int numberThreads, int calcPerThread, String numberizedString, BufferedReaderFactory brf, int fileSelection, PiThread[] piThreads) {

@@ -1,13 +1,13 @@
 package pi_files;
 
-public enum SearchFileSelection {
+public enum SearchFileEnum {
     ONETHOUSANDURL("One thousand pi digits from Internet", 1000),
     ONETHOUSANDFILE("One thousand pi digits from local file (in case it exists)", 1000),
     ONEMILLIONURL("One million pi digits from Internet", 1000000),
     ONEMILLIONFILE("One million pi digits from local file (in case it exists)", 1000000),
     ONEBILLIONURL("One billion pi digits from Internet", 1000000000),
     ONEBILLIONFILE("One billion pi digits from local file (in case it exists)", 1000000000);
-    private SearchFileSelection(String descrip, int size){
+    private SearchFileEnum(String descrip, int size){
         this.descrip = descrip;
         this.size = size;
     }
@@ -17,11 +17,11 @@ public enum SearchFileSelection {
     private String getDescrip() {
         return descrip;
     }
-    public static SearchFileSelection getOpcion(int num){
+    public static SearchFileEnum getOpcion(int num){
         return values()[num];
     }
 
-    public static int getIndex(SearchFileSelection sf){
+    public static int getIndex(SearchFileEnum sf){
         for(int i = 0; i < values().length; i++){
             if(sf.equals(values()[i])) return i;
         }

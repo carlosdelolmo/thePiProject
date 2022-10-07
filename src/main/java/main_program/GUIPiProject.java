@@ -33,7 +33,6 @@ public class GUIPiProject {
 
         tmpPanel = new JPanel();
         tmpPanel.setLayout(new FlowLayout());
-        // .setFont(new Font("Monospaced",Font.BOLD,13))
         JLabel auxL = new JLabel("Searching text");
         auxL.setFont(font);
         tmpPanel.add(auxL);
@@ -83,7 +82,6 @@ public class GUIPiProject {
     }
 
     protected void gotAnswered(String position){
-        // System.out.println(position);
         this.position.setText(position);
         this.time.setText(String.valueOf(Timer.getProgramTime()));
         button.setEnabled(true);
