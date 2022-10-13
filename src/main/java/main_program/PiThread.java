@@ -9,7 +9,7 @@ public class PiThread extends Thread {
     private final String WANTED_SEQUENCE;
     private final BufferedReader BR;
     private final FastSearcher FS;
-    private boolean canContinue = true;
+    private volatile boolean canContinue = true;
 
     protected PiThread(int start, int amount, String wantedSequence, BufferedReader br, FastSearcher fs) {
         this.START = start;
